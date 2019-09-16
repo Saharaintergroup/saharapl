@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Customer Invoice -->
+        <record id="invoice_form_cancel_inherit_extension" model="ir.ui.view">
+            <field name="name">invoice.form.cancel.extension</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_cancel']" position="replace">
+
+                    <button name="action_invoice_cancel" type="object" states="draft,open,in_payment,paid"
+                            string="Cancel" groups="allow_cancel.group_cancellation_manager"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Vendor Bill -->
+        <record id="invoice_supplier_cancel_form_inherit_ext" model="ir.ui.view">
+            <field name="name">invoice.supplier.cancel.form.inherit.ext</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice_cancel']" position="replace">
+                    <button name="action_invoice_cancel" type="object" states="draft,open,in_payment,paid"
+                            string="Cancel" groups="allow_cancel.group_cancellation_manager"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Account Payment-->
+        <record id="payment_cancel_form_inherit_ext" model="ir.ui.view">
+            <field name="name">payment.cancel.form.inherit.ext</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='cancel']" position="replace">
+                    <button name="cancel" attrs="{'invisible': [('state', 'in', ['draft','cancelled'])]}"
+                            string="Cancel" type="object" groups="allow_cancel.group_cancellation_manager"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Account Move -->
+        <record id="view_move_form_inherit_account_cancel_ext" model="ir.ui.view">
+            <field name="name">account.move.form.inherit.ext</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_cancel']" position="replace">
+
+                    <button name="button_cancel" states="posted" string="Cancel Entry" type="object"
+                            groups="allow_cancel.group_cancellation_manager"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
