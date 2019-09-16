@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_payment_receipt_document">
+    <template id="report_payment_receipt_document_extended"  inherit_id="account.report_payment_receipt_document">
+         <xpath expr="//div[@class='page']" position="replace">
         <t t-call="web.external_layout">
             <t t-set="o" t-value="o.with_context({'lang': lang})"/>
             <div class="page">
@@ -9,8 +10,8 @@
                     <div class="col-6" t-if="o.payment_date">
                         <strong>Payment Date: </strong> <span t-field="o.payment_date"/>
                     </div>
-                    <div class="col-6" t-if="o.journal_id">
-                        <strong>Payment Journal </strong> <span t-field="o.journal_id"/>
+                    <div class="col-6" t-if="o.payment_date">
+                        <strong>Payment Journal: </strong> <span t-field="o.journal_id"/>
                     </div>
                 </div>
                 <div class="row">
@@ -24,9 +25,6 @@
                     </div>
                     <div class="col-6" t-if="o.payment_method_id">
                         <strong>Payment Method: </strong><span t-field="o.payment_method_id.name"/>
-                    </div>
-                    <div class="col-6" t-if="o.payment_method_id">
-                        <strong>Payment Journal </strong> <span t-field="o.journal_id"/>
                     </div>
                 </div>
                 <div class="row mb64">
@@ -59,13 +57,14 @@
                 </table>
             </div>
         </t>
+    </xpath>
     </template>
 
     <template id="report_payment_receipt">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-set="lang" t-value="o.partner_id.lang"/>
-                <t t-call="account.report_payment_receipt_document" t-lang="lang"/>
+                <t t-call="account_report_add_journal.report_payment_receipt_document_extended" t-lang="lang"/>
             </t>
         </t>
     </template>

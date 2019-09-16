@@ -7,18 +7,15 @@
     'version': '1.0',
     'description':
         """
-Add Journal payment to Payment Receipt
+Add Journal payment
 ===========================
 This module modifies the account addon to add Jouranl payment to the Payment Receipt
         """,
-    'depends': ['base_setup', 'product', 'analytic', 'portal', 'digest','account'],
+    'depends': ['account','web'],
     'auto_install': True,
     'data': [
         'views/report_payment_receipt_templates1.xml',
-
     ],
-    'qweb': [
-        "static/src/xml/*.xml",
-    ],
+    'application': True,
     'license': 'OEEL-1',
 }
