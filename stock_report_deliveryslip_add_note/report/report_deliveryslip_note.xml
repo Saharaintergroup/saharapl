@@ -3,8 +3,6 @@
 
     <template id="report_delivery_document_extended" inherit_id="stock.report_delivery_document">
          <xpath expr="//div[hasclass('page')]" position="before">
-
-                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
                     
                    <h2>
                         <strong>Delivery Note</strong>
