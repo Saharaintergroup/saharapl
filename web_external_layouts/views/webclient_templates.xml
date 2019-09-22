@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_assets_common" name = "report_assets_common1" inherit_id="web.report_assets_common" >
+        <xpath expr="//link[@href='/web/static/src/scss/layout_background.scss']" position="after">
+            <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_1.scss"/>
+        </xpath>
+    </template>
+
+</odoo>
