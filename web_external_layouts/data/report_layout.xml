@@ -3,49 +3,49 @@
     <data>
         <record id="report_layout_1" model="report.layout">
             <field name="view_id" ref="web_external_layouts.external_layout_1"/>
-            <field name="image">/web/static/img/preview_standard1.png</field>
+            <field name="image">/web_external_layouts/static/img/preview_standard.png</field>
             <field name="pdf">/web/static/pdf/preview_standard1.pdf</field>
         </record>
 
         <record id="report_layout_2" model="report.layout">
             <field name="view_id" ref="web_external_layouts.external_layout_2"/>
-            <field name="image">/web/static/img/preview_standard2.png</field>
+            <field name="image">/web_external_layouts/static/img/preview_standard2.png</field>
             <field name="pdf">/web/static/pdf/preview_standard2.pdf</field>
         </record>
 
         <record id="report_layout_3" model="report.layout">
             <field name="view_id" ref="web_external_layouts.external_layout_3"/>
-            <field name="image">/web/static/img/preview_standard3.png</field>
+            <field name="image">/web_external_layouts/static/img/preview_standard3.png</field>
             <field name="pdf">/web/static/pdf/preview_standard3.pdf</field>
         </record>
 
         <record id="report_layout_4" model="report.layout">
             <field name="view_id" ref="web_external_layouts.external_layout_4"/>
-            <field name="image">/web/static/img/preview_standard4.png</field>
+            <field name="image">/web_external_layouts/static/img/preview_standard4.png</field>
             <field name="pdf">/web/static/pdf/preview_standard4.pdf</field>
         </record>
         
         <record id="report_layout_5" model="report.layout">
             <field name="view_id" ref="web_external_layouts.external_layout_5"/>
-            <field name="image">/web/static/img/preview_standard1.png</field>
+            <field name="image">/web_external_layouts/static/img/preview_standard.png</field>
             <field name="pdf">/web/static/pdf/preview_standard1.pdf</field>
         </record>
 
         <record id="report_layout_6" model="report.layout">
             <field name="view_id" ref="web_external_layouts.external_layout_6"/>
-            <field name="image">/web/static/img/preview_standard2.png</field>
+            <field name="image">/web_external_layouts/static/img/preview_standard2.png</field>
             <field name="pdf">/web/static/pdf/preview_standard2.pdf</field>
         </record>
 
         <record id="report_layout_7" model="report.layout">
             <field name="view_id" ref="web_external_layouts.external_layout_7"/>
-            <field name="image">/web/static/img/preview_standard3.png</field>
+            <field name="image">/web_external_layouts/static/img/preview_standard3.png</field>
             <field name="pdf">/web/static/pdf/preview_standard3.pdf</field>
         </record>
         
         <record id="report_layout_8" model="report.layout">
             <field name="view_id" ref="web_external_layouts.external_layout_8"/>
-            <field name="image">/web/static/img/preview_standard4.png</field>
+            <field name="image">/web_external_layouts/static/img/preview_standard4.png</field>
             <field name="pdf">/web/static/pdf/preview_standard4.pdf</field>
         </record>
 
