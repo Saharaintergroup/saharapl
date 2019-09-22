@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    <record id="purchase_custom_order_line_view" model="ir.ui.view">
+        <field name="name">purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="before">
+                    <field name="initial_price_unit"/>
+                    <field name="support"/>
+            </xpath>
+        </field>
+     </record>
+
+
+    </data>
+</odoo>
