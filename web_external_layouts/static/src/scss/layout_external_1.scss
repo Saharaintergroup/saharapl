@@ -7,6 +7,7 @@
 
 .o_layout_header {
     min-width: 900px;
+    max-height: 185px;
     // margin-top: 10px;
     display: flex;
     flex-direction: row;
@@ -25,11 +26,11 @@
     h2 {
         color: #ed940e;
         font-weight: 700;
-        font-size: 3.25rem;
+        font-size: 2.25rem;
         max-width: 300px;
         /*background-color: rgba(66, 57, 42, 1);*/
         padding: 5px 5px 5px 0;
-        text-align: center !important;
+        text-align: right !important;
     }
     .company_address_update {
         // color: #ed940e;

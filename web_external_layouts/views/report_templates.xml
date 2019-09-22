@@ -383,7 +383,7 @@
 
             <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" alt="Logo" />
 
-            <h2 class="mt0 float-right" t-field="company.report_header" />
+            <h2 class="float-right" t-field="company.report_header" />
         </div>
 
 
