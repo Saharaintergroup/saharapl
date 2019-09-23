@@ -11,9 +11,10 @@
     margin-top: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     margin-bottom: 5px;
+    font-size: .50rem;
     /*border-bottom: 1px solid red;*/
     border-bottom: 1px solid #ed940e;
     border-top: 1px solid #ed940e;
@@ -25,16 +26,19 @@
         // flex: flex-end;
         margin-bottom: 16px;
         margin-top: 16px;
+        flex: center;
     }
     .h2 {
         color: #ed940e;
         display: inline-block;
         font-weight: 700;
-        font-size: 2.25rem;
+        font-size: 1.25rem;
         max-width: 300px;
+        flex: flex-end;
         /*background-color: rgba(66, 57, 42, 1);*/
         // padding: 5px 5px 5px 0;
         text-align: right !important;
+        align-items: flex-end;
     }
     .company_address_update {
         // color: #ed940e;
@@ -43,6 +47,7 @@
         margin-left: 5px;
         display: inline-block;
         max-height: 180px;
+        flex: flex-start;
         text-align: left !important;
         // text-align: center ;
     }
@@ -85,6 +90,7 @@
         display: inline-block;
         padding: 5px;
         text-align: left !important;
+        align-self: flex-end !important;
     }
     .table td,
     .table th {
