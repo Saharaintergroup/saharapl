@@ -13,5 +13,5 @@ class PurchaseCustomOrderLine(models.Model):
     support = fields.Float(string='Support', digits=dp.get_precision('Product Price'))
 
     @api.onchange('initial_price_unit','support')
-    def onchange_partner_recipient(self):
+    def customorderlines(self):
         self.price_unit = self.initial_price_unit - self.support
