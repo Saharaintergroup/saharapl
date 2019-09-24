@@ -360,6 +360,7 @@
     <!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->
 
     <template id="external_layout_1">
+         <div class="container1">
          <div class="header o_layout_header">
             <div class="float-right" id ="right"  >
                 <h3 class="mt0 text-right" t-field="company.report_header" />
@@ -435,7 +436,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     </template>
 
 
