@@ -114,7 +114,14 @@
                         </div>
                         <group>
                             <group>
-                                <field name="partner_id" attrs="{'required': [('state', '=', 'draft')], 'readonly': [('state', '!=', 'draft')]}" context="{'default_is_company': True}"/>
+                                <label for="order_id"/>
+                                <div name="amount_div" class="o_row">
+                                <field name="order_id" attrs="{'required': [('state', '=', 'draft')], 'readonly': [('state', '!=', 'draft')]}" context="{'default_is_company': True}"/>
+                                <label for="partner_id"/>
+
+                                <field name="partner_id" attrs="{'required': [('state', '=', 'draft')]}" context="{'default_is_company': True}"/>
+
+                                </div>
                                 <label for="amount"/>
                                 <div name="amount_div" class="o_row">
                                     <field name="amount" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
@@ -144,6 +151,9 @@
             </field>
         </record>
 
+
+
+        <!--  Action -->
         <record id="action_customers_payments" model="ir.actions.act_window">
             <field name="name">Customers Payments</field>
             <field name="res_model">sales.customers.payments</field>
@@ -153,6 +163,58 @@
             <field name="view_id" ref="view_customers_payment_tree"/>
         </record>
         <menuitem action="sales_customers_payments.action_customers_payments" id="menu_sale_customers_payments" parent="sale.sale_order_menu" sequence="2"/>
+
+
+
+        <!-- Creat Payment -->
+        <record id="action_view_sale_advance_payment_inv" model="ir.actions.act_window">
+            <field name="name">Customers Payments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sales.customers.payments</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+
+        <!--  Payments And Counr -->
+
+        <record id="view_order_form_inherit_sale_payment" model="ir.ui.view">
+            <field name="name">sale.order.form.sale.payment</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_delivery']" position="before">
+                    <field name="payments_ids" invisible="1"/>
+                    <button type="object"
+                        name="action_view_payments"
+                        class="oe_stat_button"
+                        icon="fa-money"
+                        attrs="{'invisible': [('payment_count', '=', 0)]}" groups="base.group_user">
+                        <field name="payment_count" widget="statinfo" string="Payments"/>
+                    </button>
+                </xpath>
+                <xpath expr="//button[@name='action_done']" position="after">
+                    <button name="%(action_view_sale_advance_payment_inv)d" string="Create Payment"
+                        type="action" class="btn-primary"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--  AccountJournal Boolean -->
+
+        <record id="view_account_form_inherit_journal_payment" model="ir.ui.view">
+            <field name="name">account.journal</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="for_sales_use" />
+                </xpath>
+            </field>
+        </record>
 
     </data>
 </odoo>
