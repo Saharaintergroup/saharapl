@@ -36,12 +36,15 @@
 
 #center {
     display: inline-block;
-    margin: 15px auto;
+    margin: 35px auto;
+    // padding: 10% 0;
 }
 
 #right {
     float: right;
-    margin: 15px 15px;
+    padding: 5% 0;
+    margin: 0 15px;
+    // height: 60px;
 }
 
 .center {
@@ -67,47 +70,92 @@
     }
 }
 
+// .o_report_layout_updated1 {
+//     /*background-image: url(/base/static/img/bg_background_template.jpg);*/
+//     /*background-color: #b0aca4;*/
+//     background-size: cover;
+//     background-position: bottom center;
+//     background-repeat: no-repeat;
+//     min-height: 620px;
+//     padding: 5xp;
+//     margin-top: 100px;
+//     .table {
+//         border-top: 1px solid #ed940e;
+//     }
+//     .mb0 {
+//         // color: #ed940e;
+//         /*  display: flex;
+//             flex-direction: row;
+//             justify-content: center;*/
+//         // background-color: rgba(66, 57, 42, 1);
+//         display: inline-block;
+//         padding: 5px;
+//         text-align: left !important;
+//         align-self: flex-end !important;
+//     }
+//     .table td,
+//     .table th {
+//         border-top: none;
+//     }
+//     thead th {
+//         color: #ed940e;
+//         background-color: rgba(66, 57, 42, 1);
+//     }
+//     tbody {
+//         color: #141414;
+//         tr {
+//             &:nth-child(odd) {
+//                 /*background-color: rgba(66, 57, 42, 1);*/
+//             }
+//             &.o_line_section {
+//                 color: #141414;
+//                 /*background-color: rgba(80, 80, 107,1) !important;*/
+//             }
+//         }
+//     }
+//     /*Total table*/
+//     /* row div rule compat 12.0 */
+//     .row>div>table,
+//     div#total table {
+//         tr {
+//             &:nth-child(odd) {
+//                 background-color: transparent;
+//             }
+//             /* first-child & last-child rule compat 12.0 */
+//             &:first-child,
+//             &:last-child,
+//             &.o_subtotal,
+//             &.o_total {
+//                 border-top: none !important;
+//                 td {
+//                     color: #ed940e;
+//                     border-top: 1px solid #ed940e !important;
+//                 }
+//             }
+//         }
+//     }
+// }
 .o_report_layout_updated1 {
-    /*background-image: url(/base/static/img/bg_background_template.jpg);*/
-    /*background-color: #b0aca4;*/
+    // background-image: url(/base/static/img/bg_background_template.jpg);
     background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;
     min-height: 620px;
-    padding: 5xp;
-    margin-top: 100px;
     .table {
         border-top: 1px solid #ed940e;
-    }
-    .mb0 {
-        // color: #ed940e;
-        /*  display: flex;
-            flex-direction: row;
-            justify-content: center;*/
-        // background-color: rgba(66, 57, 42, 1);
-        display: inline-block;
-        padding: 5px;
-        text-align: left !important;
-        align-self: flex-end !important;
     }
     .table td,
     .table th {
         border-top: none;
     }
-    thead th {
+    thead tr {
         color: #ed940e;
         background-color: rgba(66, 57, 42, 1);
     }
     tbody {
         color: #141414;
         tr {
-            &:nth-child(odd) {
-                /*background-color: rgba(66, 57, 42, 1);*/
-            }
-            &.o_line_section {
-                color: #141414;
-                /*background-color: rgba(80, 80, 107,1) !important;*/
-            }
+            background-color: rgba(100, 69, 28, 0.212);
         }
     }
     /*Total table*/
@@ -115,9 +163,7 @@
     .row>div>table,
     div#total table {
         tr {
-            &:nth-child(odd) {
-                background-color: transparent;
-            }
+            background-color: transparent !important;
             /* first-child & last-child rule compat 12.0 */
             &:first-child,
             &:last-child,
@@ -125,8 +171,8 @@
             &.o_total {
                 border-top: none !important;
                 td {
-                    color: #ed940e;
-                    border-top: 1px solid #ed940e !important;
+                    color: $o-brand-odoo;
+                    border-top: 1px solid gray('400') !important;
                 }
             }
         }
