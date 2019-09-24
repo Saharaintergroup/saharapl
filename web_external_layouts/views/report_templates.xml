@@ -360,7 +360,35 @@
     <!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->
 
     <template id="external_layout_1">
-        <div class="header o_layout_header">
+         <div class="header o_layout_header">
+            <div class="float-right" id ="right"  >
+                <h3 class="mt0 text-right" t-field="company.report_header" />
+            </div>
+            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" alt="Logo" id= "center"/>
+
+            <div class="float-left company_address" id= "left">
+                <div>
+                    <strong t-field="company.partner_id.name" />
+                </div>
+                <span t-field="company.partner_id"
+                    t-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
+                     <div class="float-left adress_list">
+                    <ul style="list-style-type:none" class="ul">
+                        <li t-if="company.phone"><i class="fa fa-phone" role="img" aria-label="Phone" title="Phone" /> <span
+                                t-field="company.phone" /></li>
+                        <li t-if="company.email"><i class="fa fa-at" role="img" aria-label="Email" title="Email" /> <span
+                                t-field="company.email" /></li>
+                        <li t-if="company.website"><i class="fa fa-globe" role="img" aria-label="Website" title="Website" />
+                            <span t-field="company.website" /></li>
+                        <li t-if="company.vat"><i class="fa fa-building-o" role="img" aria-label="Fiscal number" />
+                            <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span t-field="company.vat" /></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix mb8" />
+        </div>
+        
+        <!-- <div class="header o_layout_header">
             <div class="company_address_update">
                     <strong t-field="company.partner_id.name" />
                     <span t-field="company.partner_id"
@@ -388,7 +416,7 @@
            <div class="h2_text" t-field="company.report_header" />
             
              </div>
-        </div> 
+        </div>  -->
 
 
         <div class="article o_report_layout_updated1">
