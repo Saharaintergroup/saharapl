@@ -56,7 +56,7 @@ class Sales(models.Model):
     _inherit = 'sale.order'
 
     payments_ids = fields.One2many('sales.customers.payments', 'order_id', 'Payments')
-    payments_id = fields.Many2one('sales.customers.payments')
+    payments_id = fields.Many2one('sales.customers.payments', 'Payments Id 2')
     payment_count = fields.Char(string='Coustomer Payments', compute='_compute_payments_ids')
     procurement_group_id = fields.Many2one(
         'procurement.group', 'Procurement Group',
