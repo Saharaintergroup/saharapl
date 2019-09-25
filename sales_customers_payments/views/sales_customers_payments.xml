@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="view_customers_payment_tree" model="ir.ui.view">
+            <field name="name">sales.customers.payments.tree</field>
+            <field name="model">sales.customers.payments</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'draft'" edit="false">
+                    <field name="payment_date"/>
+                    <field name="name"/>
+                    <field name="journal_id"/>
+                    <field name="partner_id" string="Customer"/>
+                    <field name="amount" sum="Amount"/>
+                    <field name="state"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="currency_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_customers_payment_kanban" model="ir.ui.view">
+            <field name="name">sales.customers.payments.kanban</field>
+            <field name="model">sales.customers.payments</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="payment_date"/>
+                    <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="row mb4">
+                                    <div class="col-6">
+                                        <strong><span><field name="name"/></span></strong>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <strong><i class="fa fa-clock-o" role="img" aria-label="Date" title="Date"/> <t t-esc="record.payment_date.value"/></strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span><field name="partner_id"/></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <field name="amount" widget='monetary'/>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="float-right badge badge-secondary">
+                                            <field name="state" widget="label_selection" options="{'classes': {'draft': 'default'}}"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_customers_payment_search" model="ir.ui.view">
+            <field name="name">sales.customers.payments.search</field>
+            <field name="model">sales.customers.payments</field>
+            <field name="arch" type="xml">
+                <search string="Payments">
+                    <field name="name" filter_domain="['|', ('name','ilike',self), ('communication','ilike',self)]" string="Description"/>
+                    <separator/>
+                    <field name="partner_id" />
+                    <field name="journal_id" />
+                    <field name="company_id" groups="base.group_multi_company" />
+                    <separator/>
+                    <filter string="Draft" domain="[('state','=','draft')]" name='state_draft'/>
+                    <filter string="Posted" domain="[('state','=','confirmed')]" name='state_confirmed'/>
+                    <filter string="Partner" name="partner" domain="[]" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Journal" name="journal" domain="[]" context="{'group_by': 'journal_id'}"/>
+                    <filter string="State" name="state" domain="[]" context="{'group_by': 'state'}"/>
+                    <filter string="Currency" name="currency" domain="[]" context="{'group_by': 'currency_id'}" groups="base.group_multi_currency"/>
+                    <filter string="Company" name="company" domain="[]" context="{'group_by': 'company_id'}" groups="base.group_multi_company" invisible="1" />
+                </search>
+            </field>
+        </record>
+
+        <record id="view_customers_payment_form" model="ir.ui.view">
+            <field name="name">sales.customers.payments.form</field>
+            <field name="model">sales.customers.payments</field>
+            <field name="arch" type="xml">
+                <form string="Register Payment">
+                    <header>
+                        <button name="ConfirmPost" class="oe_highlight" states="draft" string="Confirm" type="object" attrs="{'invisible': [('state', 'in', 'confirmed')]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title" attrs="{'invisible': [('state', '=', 'draft')]}">
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="order_ids" invisible="1"/>
+                                <field name="order_ref" invisible="1"/>
+                                <field name="partner_id" attrs="{'required': [('state', '=', 'draft')]}" context="{'default_is_company': True}"/>
+                                <label for="amount"/>
+                                <div name="amount_div" class="o_row">
+                                    <field name="amount" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    <field name="currency_id" options="{'no_create': True, 'no_open': True}" groups="base.group_multi_currency" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                </div>
+                                <field name="journal_id" widget="selection" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="order_id"/>
+                                <field name="payment_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="communication" attrs="{'invisible': [('state', '!=', 'draft'), ('communication', '=', False)], 'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="payment_trans" attrs="{'invisible': [('state', '!=', 'draft'), ('communication', '=', False)], 'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_customers_payment_graph" model="ir.ui.view">
+            <field name="name">sales.customers.payments.graph</field>
+            <field name="model">sales.customers.payments</field>
+            <field name="arch" type="xml">
+                <graph string="Invoices" type="bar" stacked="1">
+                    <field name="journal_id"/>
+                    <field name="amount" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+
+        <record id="view_customers_payment_filter" model="ir.ui.view">
+            <field name="name">sales.customers.payments</field>
+            <field name="model">sales.customers.payments</field>
+            <field name="arch" type="xml">
+                <search string="Search Customers Payment">
+                    <field name="name" filter_domain="['|', ('name','ilike',self), ('ref','ilike',self)]" string="Move"/>
+                    <field name="state"/>
+                    <field name="partner_id"/>
+                    <field name="order_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Partner" name="partner_id" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Order" name="order_id" domain="[]" context="{'group_by':'order_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <!--  Action -->
+        <record id="action_customers_payments" model="ir.actions.act_window">
+            <field name="name">Customers Payments</field>
+            <field name="res_model">sales.customers.payments</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,graph</field>
+            <field name="domain">[]</field>
+            <field name="view_id" ref="view_customers_payment_tree"/>
+        </record>
+        <menuitem action="sales_customers_payments.action_customers_payments" id="menu_sale_customers_payments" parent="sale.sale_order_menu" sequence="2"/>
+
+
+
+        <!-- Creat Payment -->
+        <record id="action_view_sale_advance_payment_inv" model="ir.actions.act_window">
+            <field name="name">Customers Payments</field>
+            <field name="res_model">sales.customers.payments</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_customers_payment_form"/>
+            <field name="context">{'default_order_ids': [(4, active_id, None)]}</field>
+            <field name="target">new</field>
+        </record>
+
+
+
+        <!--  Payments And Counr -->
+
+        <record id="view_order_form_inherit_sale_payment" model="ir.ui.view">
+            <field name="name">sale.order.form.sale.payment</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_invoice']" position="before">
+                    <field name="payments_ids" invisible="1"/>
+                    <field name="payments_id" invisible="1"/>
+                    <button type="object"
+                        name="action_view_payments"
+                        class="oe_stat_button"
+                        icon="fa-money"
+                        attrs="{'invisible': [('payment_count', '=', 0)]}" groups="base.group_user">
+                        <field name="payment_count" widget="statinfo" string="Payments"/>
+                    </button>
+                </xpath>
+                <xpath expr="//button[@name='action_done']" position="after">
+                    <button name="%(action_view_sale_advance_payment_inv)d" string="Create Payment"
+                        type="action" class="btn-primary"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--  AccountJournal Boolean -->
+
+        <record id="view_account_form_inherit_journal_payment" model="ir.ui.view">
+            <field name="name">account.journal</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="for_sales_use" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
