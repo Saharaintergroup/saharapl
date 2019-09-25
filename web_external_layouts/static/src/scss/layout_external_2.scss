@@ -1,9 +1,13 @@
 .container2 {
-    background-color: hsla(60, 33%, 10%, 0.067);
+    background-color: hsla(60, 33%, 10%, 0.067) !important;
+}
+
+.header {
+    border-top: none;
 }
 
 .header2 {
-    margin-bottom: 70px;
+    // margin-bottom: 70px;
     border-top: none;
     padding: 10px;
 }
@@ -26,7 +30,7 @@
 }
 
 .o_report_layout_updated2 {
-    margin-top: 70px;
+    // margin-top: 70px;
     min-height: 620px;
     padding: 15px;
     h3 h2 {
@@ -45,6 +49,10 @@
     .strong {
         color: #ce0707;
     }
+}
+
+.footer {
+    border-top: none;
 }
 
 .footer2 {
