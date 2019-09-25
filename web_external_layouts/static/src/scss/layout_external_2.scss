@@ -1,6 +1,6 @@
 .header2 {
     margin-bottom: 70px;
-    // border-bottom: 1px solid #444039;
+    border-top: none;
 }
 
 .img {
@@ -21,6 +21,9 @@
 }
 
 .o_report_layout_updated2 {
+    margin-top: 70px;
+    min-height: 620px;
+    padding: 15px;
     h3 h2 {
         color: #ce0707;
     }
@@ -42,4 +45,5 @@
 .footer2 {
     font-size: .80rem;
     padding: 10px;
+    border-top: none;
 }
