@@ -73,7 +73,7 @@ class Sales(models.Model):
         ('unpaid', 'Unpaid'),
         ('partially', 'Partially Paid'),
         ('paid', 'Paid'),
-        ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', track_sequence=3, default='draft', compute='onchange_calculate_total')
+        ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', track_sequence=3, default='draft',store=True, compute='onchange_calculate_total')
 
 
 
