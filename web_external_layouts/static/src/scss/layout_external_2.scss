@@ -1,0 +1,45 @@
+.header2 {
+    margin-bottom: 70px;
+    // border-bottom: 1px solid #444039;
+}
+
+.img {
+    max-height: 96px;
+    max-width: 200px;
+    margin-top: 10px;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.h3 {
+    color: #ce0707;
+    font-weight: 700;
+    font-size: 1.25rem;
+    max-width: 300px;
+    margin-top: 10px;
+    // border-bottom: 1px solid #444039;
+}
+
+.o_report_layout_updated2 {
+    h3 h2 {
+        color: #ce0707;
+    }
+    thead th {
+        color: #ce0707;
+    }
+    thead tr {
+        background-color: #f5af76;
+        border-top-color: #ce0707;
+    }
+    tbody tr {
+        background-color: hsla(30, 2%, 43%, 0.158);
+    }
+    .strong {
+        color: #ce0707;
+    }
+}
+
+.footer2 {
+    font-size: .80rem;
+    padding: 10px;
+}
