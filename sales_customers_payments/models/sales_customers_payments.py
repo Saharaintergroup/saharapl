@@ -22,7 +22,7 @@ class CustomersPaymentsSales(models.Model):
     payment_trans = fields.Char(string='Payment Transaction')
     group_id = fields.Char( readonly=True , default=lambda x: 0)
     procurement_group_id = fields.Many2one('procurement.group', 'Procurement Group', copy=False)
-    order_ids = fields.Many2many('sale.order'string='connector order')
+    order_ids = fields.Many2many('sale.order', string='connector order')
 
     @api.onchange('order_ref')
     def oderupdate(self):
