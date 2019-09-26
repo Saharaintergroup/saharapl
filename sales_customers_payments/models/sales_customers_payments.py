@@ -22,7 +22,7 @@ class CustomersPaymentsSales(models.Model):
     payment_trans = fields.Char(string='Payment Transaction')
     group_id = fields.Char( readonly=True , default=lambda x: 0)
     procurement_group_id = fields.Many2one('procurement.group', 'Procurement Group', copy=False)
-    order_ids = fields.Many2many('sale.order')
+    order_ids = fields.Many2many('sale.order'string='connector order')
 
     @api.onchange('order_ref')
     def oderupdate(self):
@@ -56,7 +56,7 @@ class Sales(models.Model):
     _inherit = 'sale.order'
 
     payments_ids = fields.One2many('sales.customers.payments', 'order_id', 'Payments')
-    payments_id = fields.Many2one('sales.customers.payments')
+    payments_id = fields.Many2one('sales.customers.payments', string='connector Payments')
     payment_count = fields.Char(string='Coustomer Payments', compute='_compute_payments_ids')
     procurement_group_id = fields.Many2one(
         'procurement.group', 'Procurement Group',
@@ -73,7 +73,7 @@ class Sales(models.Model):
         ('unpaid', 'Unpaid'),
         ('partially', 'Partially Paid'),
         ('paid', 'Paid'),
-        ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', track_sequence=3, default='draft',store=True, compute='onchange_calculate_total')
+        ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', track_sequence=3, default='draft', compute='onchange_calculate_total')
 
 
 
