@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="customer_payment_receipt_report_report_id">
+            <t t-foreach="docs" t-as="doc">
+
+           <div class="header col-xs-12" t-attf-style="padding-left:0px;padding-right:0px; color:#303030;font-size:18px;font-family:Changa;border-bottom:2px solid #eee">
+               <div style="padding-left:0px; float:left;">
+
+                   <span>
+                        <span style="float:left;">
+                        	<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="height:120px;"/>
+                    	</span>
+                        <span style="float:left; margin-left:20px;margin-top:0px;padding-top:0; height:120px; padding-left:5; border-left:5px solid 5a5a5a;">
+                            <div style="font-size:80;font-weight:bold;color:898989;margin-top:0px;padding-top:0; height:90px;">Thanks.
+                            </div>
+                            <div style="font-size:20;color:606060;margin-top:0px;padding:0;">Your Payment Received.</div>
+
+                        </span>
+                    </span>
+
+             	</div>
+        </div>
+                           
+               </t>
+        </template>
+    </data>
+</odoo>

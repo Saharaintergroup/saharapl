@@ -23,6 +23,17 @@ class CustomersPaymentsSales(models.Model):
     group_id = fields.Char( readonly=True , default=lambda x: 0)
     procurement_group_id = fields.Many2one('procurement.group', 'Procurement Group', copy=False)
     order_ids = fields.Many2many('sale.order', string='connector order')
+    invoice_ids = fields.Many2many('account.invoice', 'account_invoice_transaction_rel', 'transaction_id', 'invoice_id',
+                                   string='Invoices', copy=False, readonly=True)
+
+
+    @api.model
+    def create(self, vals):
+        if vals.get('name', _('New')) == _('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('sales.customers.payments') or _('New')                
+            result = super(CustomersPaymentsSales, self).create(vals)
+            return result
+
 
     @api.onchange('order_ref')
     def oderupdate(self):
@@ -46,10 +57,39 @@ class CustomersPaymentsSales(models.Model):
 
     @api.one
     def ConfirmPost(self):
+
+        paymet_send = self.pay_and_reconcile()
         self.write({
             'state': 'confirmed'
             })
 
+    @api.multi
+    def _prepare_account_payment_vals(self):
+        self.ensure_one()
+        return {
+            'state': 'draft',
+            'amount': self.amount,
+            'payment_type': 'inbound',
+            'currency_id': self.currency_id.id,
+            'partner_id': self.partner_id.id,
+            'partner_type': 'customer',
+            'invoice_ids': [(6, 0, self.invoice_ids.ids)],
+            'journal_id': self.journal_id.id,
+            'company_id': self.company_id.id,
+            'payment_method_id': self.env.ref('account.account_payment_method_manual_in').id,
+            'payment_token_id': None,
+            'communication': self.communication,
+            'writeoff_account_id': False,
+        }
+
+
+    @api.multi
+    def pay_and_reconcile(self):
+        payment_vals = self._prepare_account_payment_vals()
+        payment = self.env['account.payment'].create(payment_vals)
+        payment.postdraft()
+
+        return True
 
 class Sales(models.Model):
     _name = 'sale.order'
@@ -106,7 +146,15 @@ class Sales(models.Model):
     def action_view_payments(self):
         payments = self.mapped('payments_ids')
         action = self.env.ref('sales_customers_payments.action_customers_payments').read()[0]
-        return action
+        return {
+            'name': _('Customer Payments'),
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_model': 'sales.customers.payments',
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+            'domain': [('order_id', 'in', self.ids)],
+        }
 
 
 
@@ -119,3 +167,57 @@ class AccountJournalBool(models.Model):
 
     for_sales_use = fields.Boolean('For Sales Use', default=False)
 
+class account_payment(models.Model):
+    _name = "account.payment"
+    _inherit = 'account.payment'
+
+
+    @api.multi
+    def postdraft(self):
+        """ Create the journal items for the payment and update the payment's state to 'posted'.
+            A journal entry is created containing an item in the source liquidity account (selected journal's default_debit or default_credit)
+            and another in the destination reconcilable account (see _compute_destination_account_id).
+            If invoice_ids is not empty, there will be one reconcilable move line per invoice to reconcile with.
+            If the payment is a transfer, a second journal entry is created in the destination journal to receive money from the transfer account.
+        """
+        for rec in self:
+
+            if rec.state != 'draft':
+                raise UserError(_("Only a draft payment can be posted."))
+
+            if any(inv.state != 'open' for inv in rec.invoice_ids):
+                raise ValidationError(_("The payment cannot be processed because the invoice is not open!"))
+
+            # keep the name in case of a payment reset to draft
+            if not rec.name:
+                # Use the right sequence to set the name
+                if rec.payment_type == 'transfer':
+                    sequence_code = 'account.payment.transfer'
+                else:
+                    if rec.partner_type == 'customer':
+                        if rec.payment_type == 'inbound':
+                            sequence_code = 'account.payment.customer.invoice'
+                        if rec.payment_type == 'outbound':
+                            sequence_code = 'account.payment.customer.refund'
+                    if rec.partner_type == 'supplier':
+                        if rec.payment_type == 'inbound':
+                            sequence_code = 'account.payment.supplier.refund'
+                        if rec.payment_type == 'outbound':
+                            sequence_code = 'account.payment.supplier.invoice'
+                rec.name = self.env['ir.sequence'].with_context(ir_sequence_date=rec.payment_date).next_by_code(sequence_code)
+                if not rec.name and rec.payment_type != 'transfer':
+                    raise UserError(_("You have to define a sequence for %s in your company.") % (sequence_code,))
+
+            # Create the journal entry
+            amount = rec.amount * (rec.payment_type in ('outbound', 'transfer') and 1 or -1)
+            move = rec._create_payment_entry(amount)
+
+            # In case of a transfer, the first journal entry created debited the source liquidity account and credited
+            # the transfer account. Now we debit the transfer account and credit the destination liquidity account.
+            if rec.payment_type == 'transfer':
+                transfer_credit_aml = move.line_ids.filtered(lambda r: r.account_id == rec.company_id.transfer_account_id)
+                transfer_debit_aml = rec._create_transfer_entry(amount)
+                (transfer_credit_aml + transfer_debit_aml).reconcile()
+
+            rec.write({'state': 'draft', 'move_name': move.name})
+        return True

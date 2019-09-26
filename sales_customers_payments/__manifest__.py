@@ -8,6 +8,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/sales_customers_payments.xml',
+        'data/sequence.xml',
+        'report/payment.xml',
     ],
     'installable': True,
 }
