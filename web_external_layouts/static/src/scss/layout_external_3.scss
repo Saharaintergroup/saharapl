@@ -14,7 +14,7 @@
 .img3 {
     max-height: 100px;
     margin-top: 10px;
-    margin-top: 10px;
+    
 }
 
 .h3_3 {
@@ -123,16 +123,16 @@
     border-top: none;
 }
 
-.col_4_2_color{
+.col_5_2_color{
     background-color: hsla(219, 92%, 15%, 1);
 }
 
-.col_3_2_color{
+.col_4_2_color{
     background-color:hsla(360, 92%, 35%, 1);
 
 }
 
-.col_1_2_color{
+.col_2_2_color{
     background-color:hsla(0, 92%, 65%, 1);
 
 }
@@ -140,7 +140,14 @@
     background-color:hsla(0, 92%, 82%, 1);
 
 }
+.col_1_2_2color{
+    background-color:hsla(0, 92%, 90%, 1);    
+}
 
 .size_redueced3{
     height:10px; 
+}
+
+.row_margin{
+    margin-bottom: 5px;
 }
