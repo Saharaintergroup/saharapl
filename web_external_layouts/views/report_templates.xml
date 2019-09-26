@@ -27,6 +27,7 @@
         <link rel="stylesheet" type="text/scss" href="/web/static/src/scss/layout_clean.scss" />
         <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_1.scss" />
         <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_2.scss" />
+        <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_3.scss" />
 
 
         <script type="text/javascript" src="web/static/src/js/services/session.js" />
@@ -416,13 +417,105 @@
 
 
     <template id="external_layout_2">
-       <div class = "container2">
+     <div class = "container2">
+            <div class="header header2">
+                <div class="row">
+                    <div class="col-9 col9-2" name="company_address">
+                     <div t-field="company.partner_id"
+                                t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                            <div class="float-left adress_list">
+                                <ul style="list-style-type:none" class="ul">
+                                    <li t-if="company.phone"><i class="fa fa-phone" role="img" aria-label="Phone"
+                                            title="Phone" /> <span t-field="company.phone" /></li>
+                                    <li t-if="company.email"><i class="fa fa-at" role="img" aria-label="Email"
+                                            title="Email" /> <span t-field="company.email" /></li>
+                                    <li t-if="company.website"><i class="fa fa-globe" role="img" aria-label="Website"
+                                            title="Website" />
+                                        <span t-field="company.website" /></li>
+                                    <li t-if="company.vat"><i class="fa fa-building-o" role="img"
+                                            aria-label="Fiscal number" />
+                                        <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span
+                                            t-field="company.vat" /></li>
+                                </ul>
+                                <div style="border-bottom: 2px solid #ce0707;" />
+                            </div>
+                    </div>
+
+                    <div class="col-3 text-center img2">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px;"
+                            alt="Logo" />
+
+                            <div class="col-3 text-center h3" t-field="company.report_header" name="moto" />
+                    </div>
+                </div>
+            </div>
+
+                
+
+                <div class="article o_report_layout_updated2">
+                    <t t-call="web.address_layout" />
+                    <t t-raw="0" />
+                </div>
+
+                <div class="footer footer2">
+                <div class = "row">
+                    <div class ="col-3">
+                    </div>
+                    
+                    <div class="col-6">
+                    <div style="border-bottom: 2px solid #ce0707;" />
+                        <div class="text-center">
+                            <div name="financial_infos">
+                                <span t-field="company.report_footer" />
+                            </div>
+
+                            <div t-if="report_type == 'pdf'" class="text-muted">
+                                Page: <span class="page" /> / <span class="topage" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-3">
+                    </div>
+                </div>
+                </div>
+                </div>
+
+    </template>
+
+
+       <template id="external_layout_3">
         <div class="header header2">
             <div class="row">
-                <div class="col-9 col9-2" name="company_address">
-                 <div t-field="company.partner_id"
-                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
-                        <div class="float-left adress_list">
+                <div class="col-3 col-3_3" name="company_address">
+                    <div class="text-left h3_3" style="margin-top:10px;" t-field="company.report_header" name="moto" />
+                    <div t-field="company.partner_id"
+                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                </div>
+                <div class="col-9 text-right img3">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px;"
+                        alt="Logo" />
+                </div>
+                
+            </div>
+            
+        </div>
+
+           <div class="article o_report_layout_updated3">
+            <t t-call="web.address_layout" />
+            <t t-raw="0" />
+        </div>
+
+        <div class="footer footer3">
+           <div class = "row">
+            <div class = "col-5 financial_info3">
+                  <div name="financial_infos">
+                    <span t-field="company.report_footer" />
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page" /> / <span class="topage" />
+                </div>
+                 <div class="float-left adress_list">
                             <ul style="list-style-type:none" class="ul">
                                 <li t-if="company.phone"><i class="fa fa-phone" role="img" aria-label="Phone"
                                         title="Phone" /> <span t-field="company.phone" /></li>
@@ -436,97 +529,27 @@
                                     <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span
                                         t-field="company.vat" /></li>
                             </ul>
-                            <div style="border-bottom: 2px solid #ce0707;" />
-                        </div>
-                </div>
-
-                <div class="col-3 text-center img2">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px;"
-                        alt="Logo" />
-
-                        <div class="col-3 text-center h3" t-field="company.report_header" name="moto" />
-                </div>
             </div>
+
         </div>
-
-            
-
-            <div class="article o_report_layout_updated2">
-                <t t-call="web.address_layout" />
-                <t t-raw="0" />
+            <div class = "col-3 col_4_2_color size_redueced3">
+              
             </div>
 
-            <div class="footer footer2">
-            <div class = "row">
-                <div class ="col-3">
-                </div>
-                
-                <div class="col-6">
-                <div style="border-bottom: 2px solid #ce0707;" />
-                    <div class="text-center">
-                        <div name="financial_infos">
-                            <span t-field="company.report_footer" />
-                        </div>
-
-                        <div t-if="report_type == 'pdf'" class="text-muted">
-                            Page: <span class="page" /> / <span class="topage" />
-                        </div>
-                    </div>
-                </div>
-                <div class = "col-3">
-                </div>
-            </div>
-            </div>
+            <div class = "col-2 col_3_2_color size_redueced3">
+              
             </div>
 
-    </template>
-
-
-    <template id="external_layout_3">
-        <div class="header">
-            <div class="row">
-                <div class="col-3 mb4">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;"
-                        alt="Logo" />
-                </div>
-                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto" />
+            <div class = "col-1 col_1_2_color size_redueced3">
+              
             </div>
-            <div t-if="company.logo or company.report_header" class="row zero_min_height">
-                <div class="col-12">
-                    <div style="border-bottom: 1px solid black;" />
-                </div>
+
+            <div class = "col-1 col_1_2_1color size_redueced3"> 
+
             </div>
-            <div class="row">
-                <div class="col-6" name="company_address">
-                    <div t-field="company.partner_id"
-                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
-                </div>
-            </div>
-        </div>
 
-        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
-            t-att-data-oe-lang="o and o.env.context.get('lang')">
-            <t t-call="web.address_layout" />
-            <t t-raw="0" />
-        </div>
+          
 
-        <div class="footer o_standard_footer">
-            <div class="text-center" style="border-top: 1px solid black;">
-                <ul class="list-inline mb4">
-                    <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone" /></li>
-                    <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email" /></li>
-                    <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website" /></li>
-                    <li t-if="company.vat" class="list-inline-item">
-                        <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span t-field="company.vat" /></li>
-                </ul>
-
-                <div name="financial_infos">
-                    <span t-field="company.report_footer" />
-                </div>
-
-                <div t-if="report_type == 'pdf'" class="text-muted">
-                    Page: <span class="page" /> / <span class="topage" />
-                </div>
             </div>
         </div>
     </template>

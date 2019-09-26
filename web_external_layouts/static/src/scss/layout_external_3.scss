@@ -1,0 +1,146 @@
+.container3 {
+    background-color: hsla(60, 33%, 10%, 0.067) !important;
+}
+
+.header {
+    border-top: none;
+}
+
+.header3 {
+    border-top: none;
+    padding: 10px;
+}
+
+.img3 {
+    max-height: 100px;
+    margin-top: 10px;
+    margin-top: 10px;
+}
+
+.h3_3 {
+    color: hsla(219, 92%, 15%, 1);
+    font-weight: 700;
+    font-size: 1.25rem;
+    max-width: 300px;
+    margin-bottom: 12px;
+}
+
+.col3_3 {
+    font-size: .80rem;
+}
+
+.o_report_layout_updated3 {
+    padding: 10px;
+     > h2 h3 {
+        text-transform: uppercase;
+        color: hsla(219, 92%, 15%, 1);
+    }
+     
+    table {
+        border: 1px solid hsla(360, 92%, 35%, 1);
+        thead th {
+        color: hsla(219, 92%, 15%, 1);
+         }
+        
+        thead {
+            
+            tr th {
+                text-transform: uppercase;
+                border: 1px solid hsla(360, 92%, 35%, 1);
+                border-bottom: 2px hsla(360, 92%, 35%, 1);
+            }
+        }
+        tbody {
+            color: hsla(219, 92%, 15%, 1);
+            tr {
+                td {
+                    /*border-top: none;*/
+                    border-right: 1px solid gray('700');
+                }
+                &.o_line_section td,
+                &.o_line_note td,
+                &.is-subtotal td {
+                    border-top: 1px solid hsla(360, 92%, 35%, 1);
+                    border-bottom: 1px solid hsla(360, 92%, 35%, 1);
+                }
+                &.o_line_section td {
+                    background-color:hsla(360, 100%, 35%, 0.19);
+                    color:  hsla(219, 92%, 15%, 1);
+                }
+                &.is-subtotal,
+                td.o_price_total {
+                    background-color:hsla(360, 100%, 35%, 0.19);
+                }
+            }
+        }
+    }
+    /* compat 12.0 */
+    .page > table:not(.o_main_table) tr td:last-child {
+        background-color: hsla(360, 100%, 35%, 0.19);
+    }
+    /* compat 12.0 */
+    .row:not(#total) > div > table tr:not(:first-child):not(:last-child) td:last-child {
+        background-color:hsla(360, 100%, 35%, 0.19);
+    }
+    /*Total table*/
+    /* row div rule compat 12.0 */
+    .row > div > table,
+    div#total table {
+        tr {
+            &:first-child,
+            &.o_subtotal {
+                border-bottom: 1px solid hsla(360, 92%, 35%, 1);
+
+                td:first-child {
+                    border-right: none;
+                }
+            }
+            &:last-child td,
+            &.o_total td {
+                background-color: hsla(360, 100%, 35%, 0.19);
+                color: #fff;
+
+                &:first-child {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}
+
+
+.financial_info3{
+    color: hsla(219, 92%, 15%, 1);
+}
+
+.footer {
+    border-top: none;
+}
+
+.footer3 {
+    font-size: .80rem;
+    padding: 10px;
+    border-top: none;
+}
+
+.col_4_2_color{
+    background-color: hsla(219, 92%, 15%, 1);
+}
+
+.col_3_2_color{
+    background-color:hsla(360, 92%, 35%, 1);
+
+}
+
+.col_1_2_color{
+    background-color:hsla(0, 92%, 65%, 1);
+
+}
+.col_1_2_1color{
+    background-color:hsla(0, 92%, 82%, 1);
+
+}
+
+.size_redueced3{
+    height:10px; 
+}
