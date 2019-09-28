@@ -1,0 +1,133 @@
+.header {
+    border-top: none;
+}
+
+.header5 {
+    border-top: none;
+    padding: 10px;
+}
+
+.img5 {
+    max-height: 100px;
+    margin-top: 10px;
+    
+}
+
+.h3_5 {
+    color:hsla(239, 100%, 23%, 1);
+    font-weight: 700;
+    font-size: 1.25rem;
+    max-width: 300px;
+    margin-bottom: 12px;
+}
+
+.col5_5 {
+    font-size: .80rem;
+}
+
+.o_report_layout_updated5 {
+    h1, h2, h3 {
+        color: hsla(239, 100%, 23%, 1);
+        font-weight: bolder;
+    }
+    strong {
+        color: hsla(239, 100%, 23%, 1);
+    }
+    table {
+        &.o_main_table {
+            margin-bottom: 0;
+        }
+
+        thead {
+            color: black;
+            tr th {
+                border-top: 3px solid hsla(239, 100%, 23%, 1) !important;
+                background-color: hsla(239, 100%, 23%, 0.38);
+                text-transform: uppercase;
+            }
+            tr th:last-child {
+            }
+            tr th:first-child {
+                width: 48%;
+            }
+        }
+        tbody {
+            color: #000;
+            tr:first-child td {
+                border-top: none;
+            }
+            tr:last-child td {
+                border-bottom: 3px solid hsla(239, 100%, 23%, 1);
+            }
+            tr {
+                td {
+                    padding: 15px 5px;
+                }
+                td:last-child {
+                }
+            }
+        }
+    }
+    /*Total table*/
+    /* compat 12.0 */
+    .row:not(#total) > div:has(table) {
+        top: -16px;
+    }
+    /* row col rule compat 12.0 */
+    .row > div > table,
+    div#total table {
+        tr {
+            &:first-child td,
+            &.o_subtotal {
+                border-top: none !important;
+            }
+            &:last-child td,
+            &.o_total {
+                border-top: 1px solid gray('200') !important;
+            }
+        }
+    }
+}
+
+.financial_info5{
+    color:hsla(239, 100%, 23%, 1);
+}
+
+.footer {
+    border-top: none;
+}
+
+.footer5 {
+    font-size: .80rem;
+    padding: 10px;
+    border-top: none;
+}
+
+.col_5_5_1color{
+    background-color:hsla(239, 100%, 21%, 1);
+}
+
+.col_4_5_2color{
+    background-color:hsla(239, 100%, 33%, 1);
+
+}
+
+.col_2_5_3color{
+    background-color:hsla(239, 100%, 64%, 1);
+
+}
+.col_1_5_4color{
+    background-color:hsla(239, 100%, 63%, 0.73);
+
+}
+.col_1_5_5color{
+    background-color:hsla(239, 100%, 63%, 0.73);    
+}
+
+.size_redueced5{
+    height:10px; 
+}
+
+.row_margin{
+    margin-bottom: 5px;
+}

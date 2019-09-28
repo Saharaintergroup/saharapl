@@ -6,6 +6,10 @@
             <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_2.scss"/>
             <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_3.scss"/>
             <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_4.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_5.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_6.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_7.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_8.scss"/>
         </xpath>
     </template>
 

@@ -29,6 +29,10 @@
         <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_2.scss" />
         <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_3.scss" />
         <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_4.scss" />
+        <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_5.scss" />
+        <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_6.scss" />
+        <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_7.scss" />
+        <link rel="stylesheet" type="text/scss" href="/web_external_layouts/static/src/scss/layout_external_8.scss" />
 
 
         <script type="text/javascript" src="web/static/src/js/services/session.js" />
@@ -634,43 +638,66 @@
 
 
     <template id="external_layout_5">
-        <div class="header">
+            <div class="header header5">
             <div class="row">
-                <div class="col-3 mb4">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;"
-                        alt="Logo" />
-                </div>
-                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto" />
-            </div>
-            <div t-if="company.logo or company.report_header" class="row zero_min_height">
-                <div class="col-12">
-                    <div style="border-bottom: 1px solid black;" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6" name="company_address">
+                <div class="col-5 col-5_5" name="company_address">
+                    <div class="text-right h3_5" style="margin-top:10px;" t-field="company.report_header" name="moto" />
                     <div t-field="company.partner_id"
                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                         <div style="border-bottom: 2px solid #000000;" />
                 </div>
+                <div class="col-7 text-right img5">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px;"
+                        alt="Logo" />
+                </div>
+                
+            </div>  
             </div>
-        </div>
 
-        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
-            t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <div class="article o_report_layout_updated5">
             <t t-call="web.address_layout" />
             <t t-raw="0" />
-        </div>
+            </div>
 
-        <div class="footer o_standard_footer">
-            <div class="text-center" style="border-top: 1px solid black;">
-                <ul class="list-inline mb4">
-                    <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone" /></li>
-                    <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email" /></li>
-                    <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website" /></li>
-                    <li t-if="company.vat" class="list-inline-item">
-                        <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span t-field="company.vat" /></li>
-                </ul>
+            <div class="footer footer5">
+            <div class = "row row_margin">
+            <div class = "col-5 col_5_5_1color size_redueced5">
+              
+            </div>
 
+            <div class = "col-4 col_4_5_2color size_redueced5">
+              
+            </div>
+
+            <div class = "col-2 col_2_5_3color size_redueced5">
+              
+            </div>
+
+            <div class = "col-1 col_1_5_4color size_redueced5"> 
+
+            </div>
+
+          </div>
+           <div class = "row">
+                <div class = "col-4 financial_info5">
+                    <div class="float-left adress_list ">
+                                <ul style="list-style-type:none" class="ul">
+                                    <li t-if="company.phone"><i class="fa fa-phone" role="img" aria-label="Phone"
+                                            title="Phone" /> <span t-field="company.phone" /></li>
+                                    <li t-if="company.email"><i class="fa fa-at" role="img" aria-label="Email"
+                                            title="Email" /> <span t-field="company.email" /></li>
+                                    <li t-if="company.website"><i class="fa fa-globe" role="img" aria-label="Website"
+                                            title="Website" />
+                                            <span t-field="company.website" /></li>
+                                    <li t-if="company.vat"><i class="fa fa-building-o" role="img"
+                                            aria-label="Fiscal number" />
+                                            <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span
+                                            t-field="company.vat" /></li>
+                                </ul>
+                    </div>
+                </div>
+
+            <div class = "col-8 financial_info5 text-left">
                 <div name="financial_infos">
                     <span t-field="company.report_footer" />
                 </div>
@@ -679,49 +706,57 @@
                     Page: <span class="page" /> / <span class="topage" />
                 </div>
             </div>
-        </div>
+
+         </div>  
+            </div>
     </template>
 
 
     <template id="external_layout_6">
-        <div class="header">
+      <div class="header header6">
             <div class="row">
-                <div class="col-3 mb4">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;"
-                        alt="Logo" />
-                </div>
-                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto" />
-            </div>
-            <div t-if="company.logo or company.report_header" class="row zero_min_height">
-                <div class="col-12">
-                    <div style="border-bottom: 1px solid black;" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6" name="company_address">
+                <div class="col-5 col-5_6" name="company_address">
+                    <div class="text-right h3_6" style="margin-top:10px;" t-field="company.report_header" name="moto" />
                     <div t-field="company.partner_id"
                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                         <div style="border-bottom: 2px solid #e29403;" />
                 </div>
+                <div class="col-7 text-right img6">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px;"
+                        alt="Logo" />
+                </div>
+                
             </div>
+            
         </div>
 
-        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
-            t-att-data-oe-lang="o and o.env.context.get('lang')">
+           <div class="article o_report_layout_updated6">
             <t t-call="web.address_layout" />
             <t t-raw="0" />
         </div>
 
-        <div class="footer o_standard_footer">
-            <div class="text-center" style="border-top: 1px solid black;">
-                <ul class="list-inline mb4">
-                    <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone" /></li>
-                    <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email" /></li>
-                    <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website" /></li>
-                    <li t-if="company.vat" class="list-inline-item">
-                        <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span t-field="company.vat" /></li>
-                </ul>
+        <div class="footer footer6">
+            <div class = "row row_margin">
+            <div class = "col-5 col_5_6_1color size_redueced6">
+              
+            </div>
 
-                <div name="financial_infos">
+            <div class = "col-4 col_4_6_2color size_redueced6">
+              
+            </div>
+
+            <div class = "col-2 col_2_6_3color size_redueced6">
+              
+            </div>
+
+            <div class = "col-1 col_1_6_4color size_redueced6"> 
+
+            </div>
+
+          </div>
+           <div class = "row">
+            <div class = "col-8 financial_info6 text-left">
+                <div name="financial_info6">
                     <span t-field="company.report_footer" />
                 </div>
 
@@ -729,106 +764,161 @@
                     Page: <span class="page" /> / <span class="topage" />
                 </div>
             </div>
+
+            <div class = "col-4 financial_info6">
+                    <div class="float-left adress_list ">
+                                <ul style="list-style-type:none" class="ul">
+                                    <li t-if="company.phone"><i class="fa fa-phone" role="img" aria-label="Phone"
+                                            title="Phone" /> <span t-field="company.phone" /></li>
+                                    <li t-if="company.email"><i class="fa fa-at" role="img" aria-label="Email"
+                                            title="Email" /> <span t-field="company.email" /></li>
+                                    <li t-if="company.website"><i class="fa fa-globe" role="img" aria-label="Website"
+                                            title="Website" />
+                                            <span t-field="company.website" /></li>
+                                    <li t-if="company.vat"><i class="fa fa-building-o" role="img"
+                                            aria-label="Fiscal number" />
+                                            <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span
+                                            t-field="company.vat" /></li>
+                                </ul>
+                    </div>
+                </div>
+
+         </div>  
         </div>
     </template>
 
 
     <template id="external_layout_7">
-        <div class="header">
-            <div class="row">
-                <div class="col-3 mb4">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;"
-                        alt="Logo" />
+            <div class="header header7">
+                <div class="row">
+                    <div class="col-6">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"
+                            alt="Logo" />
+                    </div>
+                    <div class="col-5 offset-1 text-right" name="company_address">
+                        <ul class="list-unstyled">
+                            <strong>
+                                <li t-if="company.name"><span t-field="company.name" /></li>
+                            </strong>
+                            <li t-if="company.vat">
+                                <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span t-field="company.vat" /></li>
+                            <li t-if="company.phone">Tel: <span t-field="company.phone" /></li>
+                            <li t-if="company.email"><span t-field="company.email" /></li>
+                            <li t-if="company.website"><span t-field="company.website" /></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto" />
             </div>
-            <div t-if="company.logo or company.report_header" class="row zero_min_height">
-                <div class="col-12">
-                    <div style="border-bottom: 1px solid black;" />
-                </div>
+        
+            <div class="article o_report_layout_updated7">
+                <t t-call="web.address_layout" />
+                <t t-raw="0" />
             </div>
-            <div class="row">
-                <div class="col-6" name="company_address">
-                    <div t-field="company.partner_id"
-                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
-                </div>
+
+
+            <div class="footer footer7">
+         <div class = "row row_margin">
+            <div class = "col-5 col_5_7_1color size_redueced7">
+              
             </div>
-        </div>
 
-        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
-            t-att-data-oe-lang="o and o.env.context.get('lang')">
-            <t t-call="web.address_layout" />
-            <t t-raw="0" />
-        </div>
+            <div class = "col-4 col_4_7_2color size_redueced7">
+              
+            </div>
 
-        <div class="footer o_standard_footer">
-            <div class="text-center" style="border-top: 1px solid black;">
-                <ul class="list-inline mb4">
-                    <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone" /></li>
-                    <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email" /></li>
-                    <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website" /></li>
-                    <li t-if="company.vat" class="list-inline-item">
-                        <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span t-field="company.vat" /></li>
-                </ul>
+            <div class = "col-2 col_2_7_3color size_redueced7">
+            </div>
 
-                <div name="financial_infos">
+            <div class = "col-1 col_1_7_4color size_redueced7"> 
+
+            </div>
+
+          </div>
+            <div class="row mt8">
+                <div class="col-3">
                     <span t-field="company.report_footer" />
                 </div>
-
-                <div t-if="report_type == 'pdf'" class="text-muted">
-                    Page: <span class="page" /> / <span class="topage" />
+                <div class="col-4 text-right">
+                    <span class="company_address" t-field="company.partner_id"
+                        t-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
+                </div>
+                <div class="col-4">
+                    <h4 class="mt0 mb0 text-uppercase" t-field="company.report_header" />
+                </div>
+                <div class="col-1">
+                    <ul t-if="report_type != 'html'" class="list-inline pagenumber float-right text-center">
+                        <li class="list-inline-item"><strong><span class="page" /></strong></li>
+                    </ul>
                 </div>
             </div>
-        </div>
+            </div>
     </template>
 
 
     <template id="external_layout_8">
-        <div class="header">
+       <div class="header header8">
             <div class="row">
-                <div class="col-3 mb4">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;"
+                <div class="col-6">
+                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"
                         alt="Logo" />
                 </div>
-                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto" />
-            </div>
-            <div t-if="company.logo or company.report_header" class="row zero_min_height">
-                <div class="col-12">
-                    <div style="border-bottom: 1px solid black;" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6" name="company_address">
-                    <div t-field="company.partner_id"
-                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                <div class="col-5 offset-1 text-right" name="company_address">
+                    <ul class="list-unstyled">
+                        <strong>
+                            <li t-if="company.name"><span t-field="company.name" /></li>
+                        </strong>
+                        <li t-if="company.vat">
+                            <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span t-field="company.vat" /></li>
+                        <li t-if="company.phone">Tel: <span t-field="company.phone" /></li>
+                        <li t-if="company.email"><span t-field="company.email" /></li>
+                        <li t-if="company.website"><span t-field="company.website" /></li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
-            t-att-data-oe-lang="o and o.env.context.get('lang')">
+           <div class="article o_report_layout_updated8">
             <t t-call="web.address_layout" />
             <t t-raw="0" />
         </div>
 
-        <div class="footer o_standard_footer">
-            <div class="text-center" style="border-top: 1px solid black;">
-                <ul class="list-inline mb4">
-                    <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone" /></li>
-                    <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email" /></li>
-                    <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website" /></li>
-                    <li t-if="company.vat" class="list-inline-item">
-                        <t t-esc="company.country_id.vat_label or 'Tax ID'" />: <span t-field="company.vat" /></li>
-                </ul>
 
-                <div name="financial_infos">
+        <div class="footer footer8">
+     <div class = "row row_margin">
+            <div class = "col-5 col_5_8_1color size_redueced8">
+              
+            </div>
+
+            <div class = "col-4 col_4_8_2color size_redueced8">
+              
+            </div>
+
+            <div class = "col-2 col_2_8_3color size_redueced8">
+            </div>
+
+            <div class = "col-1 col_1_8_4color size_redueced8"> 
+
+            </div>
+
+          </div>
+            <div class="row mt8">
+                <div class="col-3">
                     <span t-field="company.report_footer" />
                 </div>
-
-                <div t-if="report_type == 'pdf'" class="text-muted">
-                    Page: <span class="page" /> / <span class="topage" />
+                <div class="col-4 text-right">
+                    <span class="company_address" t-field="company.partner_id"
+                        t-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
+                </div>
+                <div class="col-4">
+                    <h4 class="mt0 mb0 text-uppercase" t-field="company.report_header" />
+                </div>
+                <div class="col-1">
+                    <ul t-if="report_type != 'html'" class="list-inline pagenumber float-right text-center">
+                        <li class="list-inline-item"><strong><span class="page" /></strong></li>
+                    </ul>
                 </div>
             </div>
+
         </div>
     </template>
 
