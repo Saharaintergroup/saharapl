@@ -400,11 +400,11 @@
             </div>
 
 
-
-            <div class="article o_report_layout_updated1">
-                <t t-call="web.address_layout" />
-                <t t-raw="0" />
+            <div class="article o_report_layout_updated1" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
             </div>
+
 
             <div class="footer o_layout_footer">
                 <div class="text-center">
@@ -457,10 +457,11 @@
 
                 
 
-                <div class="article o_report_layout_updated2">
-                    <t t-call="web.address_layout" />
-                    <t t-raw="0" />
-                </div>
+            <div class="article o_report_layout_updated2" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
+            </div>
+
 
                 <div class="footer footer2">
                 <div class = "row">
@@ -504,10 +505,11 @@
             
         </div>
 
-           <div class="article o_report_layout_updated3">
-            <t t-call="web.address_layout" />
-            <t t-raw="0" />
-        </div>
+           <div class="article o_report_layout_updated3" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
+            </div>
+
 
         <div class="footer footer3">
             <div class = "row row_margin">
@@ -579,10 +581,11 @@
             
         </div>
 
-           <div class="article o_report_layout_updated4">
-            <t t-call="web.address_layout" />
-            <t t-raw="0" />
-        </div>
+          <div class="article o_report_layout_updated4" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
+            </div>
+
 
         <div class="footer footer4">
             <div class = "row row_margin">
@@ -654,10 +657,11 @@
             </div>  
             </div>
 
-            <div class="article o_report_layout_updated5">
-            <t t-call="web.address_layout" />
-            <t t-raw="0" />
+           <div class="article o_report_layout_updated5" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
             </div>
+
 
             <div class="footer footer5">
             <div class = "row row_margin">
@@ -730,10 +734,11 @@
             
         </div>
 
-           <div class="article o_report_layout_updated6">
-            <t t-call="web.address_layout" />
-            <t t-raw="0" />
-        </div>
+           <div class="article o_report_layout_updated6" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
+            </div>
+
 
         <div class="footer footer6">
             <div class = "row row_margin">
@@ -810,10 +815,11 @@
                 </div>
             </div>
         
-            <div class="article o_report_layout_updated7">
-                <t t-call="web.address_layout" />
-                <t t-raw="0" />
+           <div class="article o_report_layout_updated7" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
             </div>
+
 
 
             <div class="footer footer7">
@@ -877,10 +883,11 @@
             </div>
         </div>
 
-           <div class="article o_report_layout_updated8">
-            <t t-call="web.address_layout" />
-            <t t-raw="0" />
-        </div>
+          <div class="article o_report_layout_updated8" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
+            </div>
+
 
 
         <div class="footer footer8">
