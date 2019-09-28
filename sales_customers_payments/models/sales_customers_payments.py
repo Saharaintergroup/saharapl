@@ -3,7 +3,7 @@
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.addons import decimal_precision as dp
-
+from num2words import num2words
 
 class CustomersPaymentsSales(models.Model):
     _name = 'sales.customers.payments'
@@ -25,7 +25,7 @@ class CustomersPaymentsSales(models.Model):
     order_ids = fields.Many2many('sale.order', string='connector order')
     invoice_ids = fields.Many2many('account.invoice', 'account_invoice_transaction_rel', 'transaction_id', 'invoice_id',
                                    string='Invoices', copy=False, readonly=True)
-
+    amount_words = fields.Char('Amount in Words' , compute='_compute_num2words')
 
     @api.model
     def create(self, vals):
@@ -90,6 +90,16 @@ class CustomersPaymentsSales(models.Model):
         payment.postdraft()
 
         return True
+
+
+    @api.one
+    def _compute_num2words(self):
+        try:
+            self.amount_words = (num2words(self.amount, lang=self.partner_id.lang) + ' ' + (self.currency_id.name or '')).upper()
+        except NotImplementedError:
+            self.amount_words = (num2words(self.amount, lang='en') + ' ' + (self.currency_id.name or '')).upper()
+
+
 
 class Sales(models.Model):
     _name = 'sale.order'

@@ -3,27 +3,172 @@
     <data>
 
         <template id="customer_payment_receipt_report_report_id">
-            <t t-foreach="docs" t-as="doc">
+                <t t-foreach="docs" t-as="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" >
 
-           <div class="header col-xs-12" t-attf-style="padding-left:0px;padding-right:0px; color:#303030;font-size:18px;font-family:Changa;border-bottom:2px solid #eee">
-               <div style="padding-left:0px; float:left;">
+                 <t t-call="web.html_container">
+                    <t t-call="web.internal_layout">
 
-                   <span>
-                        <span style="float:left;">
-                        	<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="height:120px;"/>
-                    	</span>
-                        <span style="float:left; margin-left:20px;margin-top:0px;padding-top:0; height:120px; padding-left:5; border-left:5px solid 5a5a5a;">
-                            <div style="font-size:80;font-weight:bold;color:898989;margin-top:0px;padding-top:0; height:90px;">Thanks.
-                            </div>
-                            <div style="font-size:20;color:606060;margin-top:0px;padding:0;">Your Payment Received.</div>
 
-                        </span>
+            <div class="col-xs-12">
+                 <div class="col-xs-8 mb8 pull-right" >
+                    <h2  style='text-align: center;  color:#616161; font-weight:bold;'>Payment Recepit</h2>
+                </div>
+
+
+               <div class="col-xs-2 mb8 pull-right" style="padding-left:0px; float:right; ">
+
+                <span>
+                    <span style="float:left;">
+                            <img t-if="doc.company_id.logo" t-att-src="image_data_uri(docs.company_id.logo_web)" style="height:120px;"/>
+
                     </span>
+                </span>
 
-             	</div>
-        </div>
-                           
-               </t>
+                </div>
+
+                <div class="col-xs-2 mb8 pull-left" style="padding-bottom:2px;padding-left:0px;">
+                    <div class="pull-left" style="width:auto; font-size:14px; ">
+                        <div><span  style=" margin-left:5px;" t-esc="doc.partner_id.company_id.name"/></div>
+                        <div><span  style=" margin-left:5px;" t-esc="doc.partner_id.company_id.street"/></div>
+                        <div><span style=" margin-left:5px;" t-esc="doc.partner_id.company_id.phone"/></div>
+                        <div><span style=" margin-left:5px;" t-esc="doc.partner_id.company_id.email"/></div>
+                </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+                    <div class="page">
+                    <table class="col-xs-9 table table-bordered" style='border-style: solid;  border-color:#616161; border-width:2px;padding:5px;width: 100%;'>
+                        <tr class="active">
+                            <td><strong>Date</strong></td>
+                            <td><span t-field="doc.payment_date"/></td>
+                            <td><strong>Amount</strong></td>
+                            <td><span t-field="doc.amount"/></td>
+                        </tr>
+                    </table>
+
+                    <div class="col-xs-9" style='padding:5px; width: 100%;'>
+                     <div class="col-xs-6">
+                    <table class="col-xs-9 table table-bordered" style='border-style: solid;  border-color:#616161; border-width: 1px ;padding:5px;width: 100%;'>
+                        <tr>
+                            <td><strong>Received From Mr</strong></td>
+                            <td><span t-field="doc.partner_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Amount in letter</strong></td>
+                            <td><span t-field="doc.amount_words"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>And that for</strong></td>
+                            <td><span t-field="doc.payment_trans"/></td>
+                        </tr>
+                    </table>
+
+
+                              
+                     </div>
+                     <p style="float:left; padding:10px;" class="text-right"><strong>Receiver Signature توقيع المستلم</strong></p>
+                     </div>
+
+
+
+                    </div>
+
+
+
+
+
+<br/>
+<br/><br/>
+<br/>
+<div class="row" style="width:100%; border-bottom:2px dotted  #eee; margin-top:10px; margin-bottom:10px;">
+</div>
+<br/>
+
+
+
+            <div class="col-xs-12">
+                <div class="col-xs-8 mb8 pull-right" >
+                    <h2 style='text-align: center;  color:#616161; font-weight:bold;'>Payment Recepit</h2>
+                </div>
+
+               <div class="col-xs-2 mb8 pull-right" style="padding-left:0px; float:right; ">
+
+                <span>
+                    <span style="float:left;">
+                            <img t-if="doc.company_id.logo" t-att-src="image_data_uri(docs.company_id.logo_web)" style="height:120px;"/>
+
+                    </span>
+                </span>
+
+                </div>
+
+                <div class="col-xs-2 mb8 pull-left" style="padding-bottom:2px;padding-left:0px;">
+                    <div class="pull-left" style="width:auto; font-size:14px; ">
+                        <div><span  style=" margin-left:5px;" t-esc="doc.partner_id.company_id.name"/></div>
+                        <div><span  style=" margin-left:5px;" t-esc="doc.partner_id.company_id.street"/></div>
+                        <div><span style=" margin-left:5px;" t-esc="doc.partner_id.company_id.phone"/></div>
+                        <div><span style=" margin-left:5px;" t-esc="doc.partner_id.company_id.email"/></div>
+                </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+                    <div class="page">
+                    <table class="col-xs-9 table table-bordered" style='border-style: solid;  border-color:#616161; border-width:2px;padding:5px;width: 100%;'>
+                        <tr class="active">
+                            <td><strong>Date</strong></td>
+                            <td><span t-field="doc.payment_date"/></td>
+                            <td><strong>Amount</strong></td>
+                            <td><span t-field="doc.amount"/></td>
+                        </tr>
+                    </table>
+
+                    <div class="col-xs-9" style='padding:5px; width: 100%;'>
+                     <div class="col-xs-6">
+                    <table class="col-xs-9 table table-bordered" style='border-style: solid;  border-color:#616161; border-width: 1px ;padding:5px;width: 100%;'>
+                        <tr>
+                            <td><strong>Received From Mr</strong></td>
+                            <td><span t-field="doc.partner_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Amount in letter</strong></td>
+                            <td><span t-field="doc.amount_words"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>And that for</strong></td>
+                            <td><span t-field="doc.payment_trans"/></td>
+                        </tr>
+                    </table>
+
+
+                              
+                     </div>
+                     <p style="float:left; padding:10px;" class="text-right"><strong>Receiver Signature توقيع المستلم</strong></p>
+                     </div>
+
+
+
+                    </div>
+
+
+
+
+
+           </t>          </t>
+
+           </t>
         </template>
     </data>
 </odoo>
