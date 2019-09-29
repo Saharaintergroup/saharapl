@@ -27,68 +27,56 @@
 
 .o_report_layout_updated6 {
 
-    h3{
-        color:hsla(115, 6%, 24%, 1);
-        font-weight: bolder;
+    .table {
+        border-top: 1px solid hsla(115, 6%, 24%, 1);
     }
-    h1, h2 {
-        color: hsla(136, 100%, 24%, 1);
-        font-weight: bolder;
-    }
-    strong {
-        color:hsla(115, 6%, 24%, 1);
-    }
-    table {
-        &.o_main_table {
-            margin-bottom: 0;
-        }
 
-        thead {
-            color: black;
-            tr th {
-                border-top: 3px solid hsla(115, 6%, 24%, 1) !important;
-                background-color:hsla(115, 6%, 24%, 0.45);
-                text-transform: uppercase;
+    .table td, .table th {
+        border-top: none;
+    }
+    thead tr th {
+        background-color: hsla(115, 6%, 24%, .25) !important;
+        color: hsla(115, 6%, 24%, 1);
+    }
+    h2 span{
+         background-color: hsla(115, 6%, 24%, .25) !important; 
+      }  
+    tbody {
+        color: hsla(115, 6%, 24%, 1);
+        tr {
+            &:nth-child(odd) {
+                /*background-color: hsla(115, 6%, 24%, .25);*/
             }
-            tr th:last-child {
-            }
-            tr th:first-child {
-                width: 48%;
-            }
-        }
-        tbody {
-            color: #000;
-            tr:first-child td {
-                border-top: none;
-            }
-            tr:last-child td {
-                border-bottom: 3px solid hsla(115, 6%, 24%, 1);
-            }
-            tr {
-                td {
-                    padding: 15px 5px;
-                }
-                td:last-child {
-                }
+            &.o_line_section {
+                color: hsla(115, 6%, 24%, 1);
+                background-color: hsla(115, 6%, 24%, .25) !important;
             }
         }
     }
     /*Total table*/
-    /* compat 12.0 */
-    .row:not(#total) > div:has(table) {
-        top: -16px;
-    }
-    /* row col rule compat 12.0 */
+    /* row div rule compat 12.0 */
     .row > div > table,
     div#total table {
         tr {
-            &:first-child td,
-            &.o_subtotal {
-                border-top: none !important;
+            &:nth-child(odd) {
+                background-color: transparent !important;
             }
-            &:last-child td,
+            /* first-child & last-child rule compat 12.0 */
+            &:first-child,
+            &:last-child,
+            &.o_subtotal,
             &.o_total {
-                border-top: 1px solid gray('200') !important;
+                border-top: none !important;
+                td {
+                    color: hsla(115, 6%, 24%, 1);
+                    border-top: 1px solid gray('400') !important;
+                }
+            }
+        }
+        tr {
+            &:last-child,
+            &.o_total{
+                background-color: hsla(115, 6%, 24%, .25) !important;
             }
         }
     }

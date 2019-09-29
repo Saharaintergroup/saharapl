@@ -26,44 +26,43 @@
 }
 
 .o_report_layout_updated5 {
-    h1, h2, h3 {
+
+   h2{
         color: hsla(239, 100%, 23%, 1);
-        font-weight: bolder;
-    }
-    strong {
-        color: hsla(239, 100%, 23%, 1);
+        text-transform: uppercase;
+        font-weight: 700;
     }
     table {
-        &.o_main_table {
-            margin-bottom: 0;
-        }
-
+        border: 1px solid hsla(239, 100%, 23%, 1);
         thead {
-            color: black;
+            background-color: hsla(239, 100%, 23%, .25);
+            border-bottom: 2px solid hsla(239, 100%, 23%, 1);
             tr th {
-                border-top: 3px solid hsla(239, 100%, 23%, 1) !important;
-                background-color: hsla(239, 100%, 23%, 0.38);
                 text-transform: uppercase;
-            }
-            tr th:last-child {
-            }
-            tr th:first-child {
-                width: 48%;
+                border: 1px solid hsla(239, 100%, 23%, 1);
             }
         }
         tbody {
-            color: #000;
-            tr:first-child td {
-                border-top: none;
-            }
-            tr:last-child td {
-                border-bottom: 3px solid hsla(239, 100%, 23%, 1);
-            }
+            color: hsla(239, 100%, 23%, 1);
             tr {
                 td {
-                    padding: 15px 5px;
+                    // remove border-top from standard layout
+                    border-top: none;
+                    border-right: 1px solid hsla(239, 100%, 23%, 1);
                 }
-                td:last-child {
+                &.o_line_section td,
+                &.o_line_note td,
+                &.is-subtotal td {
+                    border-top: 1px solid hsla(239, 100%, 23%, 1);
+                    border-bottom: 1px solid hsla(239, 100%, 23%, 1);
+                }
+                &.o_line_section td {
+                    background-color: hsla(239, 100%, 23%, .25);
+                    color: #fff;
+                }
+                &.is-subtotal,
+                td.o_price_total {
+                    /*background-color: hsla(239, 100%, 23%, .25);*/
                 }
             }
         }
@@ -76,14 +75,25 @@
     /* row col rule compat 12.0 */
     .row > div > table,
     div#total table {
+        td{
+            &:last-child,
+            &.o_total,
+            &.text-right,{
+                 /*border-top: 1px solid gray('200') !important;*/
+                background-color: hsla(239, 100%, 23%, .25);
+            }
+
+        }
         tr {
             &:first-child td,
             &.o_subtotal {
-                border-top: none !important;
+                border-bottom:1px solid gray('200') !important;
             }
             &:last-child td,
-            &.o_total {
+            &.o_total,
+            &.text-right, {
                 border-top: 1px solid gray('200') !important;
+               /* background-color: hsla(239, 100%, 23%, .25);*/
             }
         }
     }
