@@ -15,15 +15,8 @@
                 </div>
 
 
-               <div class="col-xs-2 mb8 pull-right" style="padding-left:0px; float:right; ">
-
-                <span>
-                    <span style="float:left;">
+               <div class="col-xs-2 mb8 pull-left" >
                             <img t-if="doc.company_id.logo" t-att-src="image_data_uri(docs.company_id.logo_web)" style="height:120px;"/>
-
-                    </span>
-                </span>
-
                 </div>
 
                 <div class="col-xs-2 mb8 pull-left" style="padding-bottom:2px;padding-left:0px;">
@@ -72,7 +65,7 @@
 
                               
                      </div>
-                     <p style="float:left; padding:10px;" class="text-right"><strong>Receiver Signature توقيع المستلم</strong></p>
+                     <p style="float:left; padding:10px;" class="text-right"><strong>Receiver Signature</strong></p>
                      </div>
 
 
@@ -97,15 +90,8 @@
                     <h2 style='text-align: center;  color:#616161; font-weight:bold;'>Payment Recepit</h2>
                 </div>
 
-               <div class="col-xs-2 mb8 pull-right" style="padding-left:0px; float:right; ">
-
-                <span>
-                    <span style="float:left;">
+               <div class="col-xs-2 mb8 pull-left" >
                             <img t-if="doc.company_id.logo" t-att-src="image_data_uri(docs.company_id.logo_web)" style="height:120px;"/>
-
-                    </span>
-                </span>
-
                 </div>
 
                 <div class="col-xs-2 mb8 pull-left" style="padding-bottom:2px;padding-left:0px;">
@@ -155,7 +141,7 @@
 
                               
                      </div>
-                     <p style="float:left; padding:10px;" class="text-right"><strong>Receiver Signature توقيع المستلم</strong></p>
+                     <p style="float:left; padding:10px;" class="text-right"><strong>Receiver Signature</strong></p>
                      </div>
 
 
