@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_status" model="ir.ui.view">
+        <field name="name">purchase.requisition.form.status</field>
+        <field name="model">purchase.requisition</field>        
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/group" position="inside">
+            
+                <group>
+                        <field name="purchase_sales_status"/>
+                        <field name="purchase_procurement_status"/>
+                    </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
