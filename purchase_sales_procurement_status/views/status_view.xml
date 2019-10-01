@@ -60,11 +60,11 @@
 
                       <menuitem id="menu_sales_status_name" name="Sales Status"
       				            parent="purchase.menu_purchase_config"
-      				            action="purchase_sales_status_menu" sequence="3"  groups="base.group_no_one"/>
+      				            action="purchase_sales_status_menu" sequence="3"/>
 
 						          <menuitem id="menu_procurement_status_name" name="Procurement Status"
                					 parent="purchase.menu_purchase_config"
-               			 		 action="purchase_procurement_status_menu" sequence="4"  groups="base.group_no_one"/>
+               			 		 action="purchase_procurement_status_menu" sequence="4"/>
 
 
 </odoo>
