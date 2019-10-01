@@ -10,10 +10,24 @@
             <xpath expr="//sheet/group" position="inside">
             
                 <group>
-                        <field name="purchase_sales_status"/>
-                        <field name="purchase_procurement_status"/>
+                        <field name="purchase_sales_status" widget="selection"/>
+                        <field name="purchase_procurement_status" widget="selection"/>
                     </group>
             </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_purchase_status_tree" model="ir.ui.view">
+        <field name="name">purchase.requisition.tree.status</field>
+        <field name="model">purchase.requisition</field>        
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_tree"/>
+        <field name="arch" type="xml">
+
+             <xpath expr="//field[@name='origin']" position="before">
+              <field name="purchase_sales_status"/>
+              <field name="purchase_procurement_status"/>
+          </xpath>
         </field>
     </record>
 
